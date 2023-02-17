@@ -42,13 +42,19 @@
 
 <body  class="container-fluid">
 
-  {% if messages %}
-  {% for message in messages %}
-  <div class="alert alert-info">
-    <strong>{{message}}</strong>
+  <div class="card">
+    <center><b><h1>Rejalar Toplami</h1></b></center>
+    <hr/>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info">
+      <strong>{{message}}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <hr/>
+    <br />
   </div>
-  {% endfor %}
-  {% endif %}
 
   <center class="row">
     <h1><i>Kundalik ishlar</i></h1>
@@ -58,23 +64,29 @@
   <div class="row">
 
     <div class="col-md-8">
+      {% if messages %}
+      {% for message in messages %}
       <div class="card">
-        <center><b>Title of the todo</b></center>
+        <center><b>{{message.nom}}</b></center>
         <hr/>
-        Todo time
+        {{message.vaqt}}
         <hr/>
-        Todo description
+        {{message.batavsil}}
         <hr/>
-        Todo status
+        {{message.status}}
         <br />
-        <button class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span><a href="#">O'chirish</a></button>
+        <button class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span><a href="{% url 'delet' message.id %}">O'chirish</a></button>
       </div>
+      {% endfor %}
+      {% endif %}
     </div>
     <div class="col-md-1"> </div>
     <div class="col-md-3" >
       <div  class="submit_form">
-      <form action="#" >
-        
+      <form action=""  method="post" >{% csrf_token %}
+        <div>
+          {{ form.as_p }}
+        </div>
         <center>
         <button type="submit" class="btn btn-default">Topshirish</button>
       </center>
