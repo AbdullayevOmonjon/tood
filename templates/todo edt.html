@@ -41,49 +41,7 @@
 </head>
 
 <body  class="container-fluid">
-
-  <div class="card">
-    <center><b><h1>Rejalar Toplami</h1></b></center>
-    <hr/>
-    {% if messages %}
-    {% for message in messages %}
-    <div class="alert alert-info">
-      <strong>{{message}}</strong>
-    </div>
-    {% endfor %}
-    {% endif %}
-    <hr/>
-    <br />
-  </div>
-
-  <center class="row">
-    <h1><i>Kundalik ishlar</i></h1>
-    <hr />
-  </center>
-
   <div class="row">
-
-    <div class="col-md-8">
-      {% if messages %}
-      {% for message in messages %}
-      <div class="card">
-        <center><b>{{message.nom}}</b></center>
-        <hr/>
-        {{message.vaqt}}
-        <hr/>
-        {{message.batavsil}}
-        <hr/>
-        {{message.status}}
-        <br />
-        <button class="btn btn-primary" style="float: right;"><span class="glyphicon glyphicon-trash"></span><a href="{% url 'delet' message.id %}">O'chirish</a>
-          <button>
-            <a href="{% url 'update' message.id %}">updeat</a>
-          </button>
-        </button>
-      </div>
-      {% endfor %}
-      {% endif %}
-    </div>
     <div class="col-md-1"> </div>
     <div class="col-md-3" >
       <div  class="submit_form">
@@ -94,8 +52,8 @@
       </center>
       </form>
     </div>
-  </div>
-</div>
+   </div>
+ </div>
 </body>
 
 </html>
