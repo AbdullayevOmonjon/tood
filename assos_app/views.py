@@ -38,4 +38,13 @@ def delet(request,son):
     'message':Tood.objects.get(id=son).delete()
   }
   return redirect('todo')
+
+def loginview(request):
+  if request.method == 'POST':
+    user=authenticate(Username=request.POST.get('login'),
+                 password=request.POST.get('parol'))
+    if user is None:
+      return redirect('/')
+    return redirect("todo")
+  return render(request,'login.html')
   
